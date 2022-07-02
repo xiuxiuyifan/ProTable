@@ -577,6 +577,25 @@ module.exports = app => {
 
 ```
 
+## router.js
+
+```js
+'use strict';
+
+/**
+ * @param {Egg.Application} app - egg application
+ */
+module.exports = app => {
+  const { router, controller } = app;
+  router.get('/api/projectConfig', controller.projectConfig.index);
+  router.post('/api/projectConfig', controller.projectConfig.create);
+  router.put('/api/projectConfig/:id', controller.projectConfig.update);
+  router.delete('/api/projectConfig/:id', controller.projectConfig.destroy);
+  router.post('/api/projectConfig/batchDelete', controller.projectConfig.batchDestroy);
+};
+
+```
+
 ## API 文档 Apifox
 
 先快速测试一把，然后去对前端代码。
