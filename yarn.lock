@@ -1719,11 +1719,6 @@
   optionalDependencies:
     prettier "^1.18.2 || ^2.0.0"
 
-"@vue/devtools-api@^6.0.0", "@vue/devtools-api@^6.0.0-beta.11":
-  version "6.1.4"
-  resolved "https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.1.4.tgz"
-  integrity sha512-IiA0SvDrJEgXvVxjNkHPFfDx6SXw0b/TUkqMcDZWNg9fnCAHbTpoo59YfJ9QLFkwa3raau5vSlRVzMSLDnfdtQ==
-
 "@vue/eslint-config-standard@^6.1.0":
   version "6.1.0"
   resolved "https://registry.npmmirror.com/@vue/eslint-config-standard/-/eslint-config-standard-6.1.0.tgz"
@@ -2491,6 +2486,15 @@ cli-spinners@^2.5.0:
   resolved "https://registry.npmmirror.com/cli-spinners/-/cli-spinners-2.6.1.tgz"
   integrity sha512-x/5fWmGMnbKQAaNwN+UZlV79qBLM9JFnJuJ03gIi5whrob0xV0ofNVHy9DhwGdsMJQc2OKv0oGmLzvaqvAVv+g==
 
+clipboard@^2.0.4:
+  version "2.0.11"
+  resolved "https://registry.npmmirror.com/clipboard/-/clipboard-2.0.11.tgz#62180360b97dd668b6b3a84ec226975762a70be5"
+  integrity sha512-C+0bbOqkezLIsmWSvlsXS0Q0bmkugu7jcfMIACB+RDEntIzQIkdr148we28AfSloQLRdZlYL/QYyrq05j/3Faw==
+  dependencies:
+    good-listener "^1.2.2"
+    select "^1.1.2"
+    tiny-emitter "^2.0.0"
+
 clipboardy@^2.3.0:
   version "2.3.0"
   resolved "https://registry.npmmirror.com/clipboardy/-/clipboardy-2.3.0.tgz"
@@ -2931,6 +2935,11 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/delayed-stream/-/delayed-stream-1.0.0.tgz"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
+
+delegate@^3.1.2:
+  version "3.2.0"
+  resolved "https://registry.npmmirror.com/delegate/-/delegate-3.2.0.tgz#b66b71c3158522e8ab5744f720d8ca0c2af59166"
+  integrity sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==
 
 depd@2.0.0:
   version "2.0.0"
@@ -3886,6 +3895,13 @@ globby@^11.0.2, globby@^11.0.3, globby@^11.1.0:
     ignore "^5.2.0"
     merge2 "^1.4.1"
     slash "^3.0.0"
+
+good-listener@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.npmmirror.com/good-listener/-/good-listener-1.2.2.tgz#d53b30cdf9313dffb7dc9a0d477096aa6d145c50"
+  integrity sha512-goW1b+d9q/HIwbVYZzZ6SsTr4IgE+WA44A0GmPIQstuOrgsFcT7VEJ48nmr9GaRtNu0XTKacFLGnBPAM6Afouw==
+  dependencies:
+    delegate "^3.1.2"
 
 graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4, graceful-fs@^4.2.6, graceful-fs@^4.2.9:
   version "4.2.10"
@@ -5910,6 +5926,11 @@ select-hose@^2.0.0:
   resolved "https://registry.npmmirror.com/select-hose/-/select-hose-2.0.0.tgz"
   integrity sha512-mEugaLK+YfkijB4fx0e6kImuJdCIt2LxCRcbEYPqRGCs4F2ogyfZU5IAZRdjCP8JPq2AtdNoC/Dux63d9Kiryg==
 
+select@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npmmirror.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
+  integrity sha512-OwpTSOfy6xSs1+pwcNrv0RBMOzI39Lp3qQKUTPVVPRjCdNa5JH/oPRiqsesIskK8TVgmRiHwO4KXlV2Li9dANA==
+
 selfsigned@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmmirror.com/selfsigned/-/selfsigned-2.0.1.tgz"
@@ -6406,6 +6427,11 @@ thunky@^1.0.2:
   resolved "https://registry.npmmirror.com/thunky/-/thunky-1.1.0.tgz"
   integrity sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA==
 
+tiny-emitter@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.npmmirror.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
+  integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
+
 to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmmirror.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz"
@@ -6616,6 +6642,13 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.npmmirror.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
 
+vue-json-viewer@3:
+  version "3.0.4"
+  resolved "https://registry.npmmirror.com/vue-json-viewer/-/vue-json-viewer-3.0.4.tgz#c1d65515e57d4036defbbc18fa942d7fd5fb9a8b"
+  integrity sha512-pnC080rTub6YjccthVSNQod2z9Sl5IUUq46srXtn6rxwhW8QM4rlYn+CTSLFKXWfw+N3xv77Cioxw7B4XUKIbQ==
+  dependencies:
+    clipboard "^2.0.4"
+
 vue-loader@^17.0.0:
   version "17.0.0"
   resolved "https://registry.npmmirror.com/vue-loader/-/vue-loader-17.0.0.tgz"
@@ -6624,13 +6657,6 @@ vue-loader@^17.0.0:
     chalk "^4.1.0"
     hash-sum "^2.0.0"
     loader-utils "^2.0.0"
-
-vue-router@^4.0.3:
-  version "4.0.15"
-  resolved "https://registry.npmmirror.com/vue-router/-/vue-router-4.0.15.tgz"
-  integrity sha512-xa+pIN9ZqORdIW1MkN2+d9Ui2pCM1b/UMgwYUCZOiFYHAvz/slKKBDha8DLrh5aCG/RibtrpyhKjKOZ85tYyWg==
-  dependencies:
-    "@vue/devtools-api" "^6.0.0"
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.3:
   version "4.1.3"
@@ -6655,13 +6681,6 @@ vue@^3.2.13:
     "@vue/runtime-dom" "3.2.36"
     "@vue/server-renderer" "3.2.36"
     "@vue/shared" "3.2.36"
-
-vuex@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.npmmirror.com/vuex/-/vuex-4.0.2.tgz"
-  integrity sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==
-  dependencies:
-    "@vue/devtools-api" "^6.0.0-beta.11"
 
 watchpack@^2.3.1:
   version "2.4.0"

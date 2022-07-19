@@ -55,6 +55,7 @@
                   style="width: 100%;"
                   @update:model-value="($event) => handleChange(item.key, $event)"
                   v-bind="item.attrs"
+                  :options="item.options"
                   :placeholder="item.searchType && placeholderMapping[item.searchType]"
                 >
                 </Component>
@@ -80,7 +81,7 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue'
-import { ColumnProps, FormItemType } from '../ProTable/types'
+import { ColumnProps } from '../ProTable/types'
 import { FormModel } from './types'
 import { placeholderMapping } from '@/components/Fields/constants'
 

@@ -1,5 +1,5 @@
 {
-  "name": "vue3-demo",
+  "name": "vue3-pro-table",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,8 +15,7 @@
     "lodash": "^4.17.21",
     "resize-observer-polyfill": "^1.5.1",
     "vue": "^3.2.13",
-    "vue-router": "^4.0.3",
-    "vuex": "^4.0.0"
+    "vue-json-viewer": "3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.4.0",

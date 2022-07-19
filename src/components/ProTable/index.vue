@@ -13,17 +13,17 @@
       @custom-list-item="onCustomListItem"
     ></SearchForm>
     <el-table
-      :data="tableData"
-      class="table-wrapper"
-      :class="{'scroll-table': hasScroll}"
-      v-loading="loading"
       ref="tableRef"
+      class="table-wrapper"
+      v-loading="loading"
+      v-bind="props.tableAttrs"
+      :data="tableData"
+      :class="{'scroll-table': hasScroll}"
       @select-all="handleSelectAll($event)"
       @selection-change="handleSelectAll($event)"
     >
-      <el-table-column fixed="left" type="selection" width="50" align="center" />
       <template  v-for="(item, index) in columnsCopy" :key="index">
-        <el-table-column label="操作" v-if="item.key === 'action'">
+        <el-table-column label="操作" v-if="item.key === 'action'" :width="item.width" v-bind="item.attrs">
           <template #default="scope">
           <el-button
             link
@@ -42,13 +42,16 @@
           :prop="item.key"
           :label="item.title"
           :width="item.width"
+          v-bind="item.attrs"
         >
-          <template #default="scope" v-if="item.columnType === 'status'">
-            <el-tag
-              :type="scope.row[item.key] === 1 ? 'success' : 'danger'"
-              disable-transitions
-              >{{ scope.row[item.key] === 1 ? '启用' : '禁用' }}
-            </el-tag>
+          <template #default="{row}">
+            <Component
+              v-if="item.slotType"
+              :is="slotFieldMap[item.slotType]"
+              :data="row[item.key]"
+            >
+            </Component>
+            <slot v-if="item.slot" :row="row" :name="item.slot"></slot>
           </template>
         </el-table-column>
       </template>
@@ -62,20 +65,22 @@
       </div>
       <el-pagination
         class="pull-right"
+        layout="total, sizes, prev, pager, next"
         v-model:currentPage="pageIndex"
         v-model:page-size="pageSize"
         :page-sizes="[5, 10, 20, 50, 100, 200]"
-        layout="total, sizes, prev, pager, next"
         :total="total"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       />
     </div>
     <AddForm
+      ref="addFormRef"
       :columns="props.columns"
       :type="props.type"
-      ref="addFormRef"
       :request-url="props.requestUrl"
+      :form-attrs="props.formAttrs"
+      v-if="props.requestUrl.create"
       @ok="search('all')"
       @edit-ok="search"
     >
@@ -90,28 +95,24 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onMounted, reactive, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import ResizeObserver from 'resize-observer-polyfill'
 
 import SearchForm from '../SearchForm/index.vue'
 import { FormModel } from '../SearchForm/types'
-import { ColumnProps, RequestUrl } from './types'
+import { proTableProps } from './types'
 import http from '@/service'
-import { projectConfig, projectConfigBatchDelete } from '@/service/api'
 import { cloneDeep } from 'lodash'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import CustomListItem from './components/CustomListItem.vue'
 import AddForm from './components/AddForm.vue'
+import StatusTag from '../CellFields/StatusTag.vue'
+import JsonField from '../CellFields/JsonField.vue'
+import ProgressField from '../CellFields/ProgressField.vue'
+import SingleArray from '../CellFields/SingleArray.vue'
+import TableField from '../CellFields/TableField.vue'
 
-interface Props {
-  columns: ColumnProps[] // 列的字段
-  type: string // 这个属于业务字段啦， 会在组件内部使用，后面处理如果不传的情况
-  requestUrl: RequestUrl
-  beforeSubmit?: () => void
-}
-const props = withDefaults(defineProps<Props>(), {
-  columns: () => []
-})
+const props = defineProps(proTableProps)
 
 const columnsCopy = ref(props.columns.map(item => ({ ...item })).filter(item => item.show !== false))
 
@@ -336,6 +337,13 @@ const handleColumnChange = (checkedList: string[]) => {
   columnsCopy.value = props.columns.filter(item => item.show !== false).filter(item => (checkedList.includes(item.title)))
 }
 
+const slotFieldMap = {
+  StatusTag,
+  JsonField,
+  ProgressField,
+  SingleArray,
+  TableField
+}
 </script>
 
 <script lang="ts">

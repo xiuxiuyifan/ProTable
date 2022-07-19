@@ -11,6 +11,7 @@
     label-position="left"
     :inline="true"
     :model="addFormData"
+    v-bind="props.formAttrs"
   >
     <el-row :gutter="15">
       <template
@@ -21,11 +22,12 @@
           <UseExpandField :label="item.title"/>
         </el-col>
         <el-col :span="12" v-else>
-          <el-form-item :label="item.title + '：'" style="width: 100%">
+          <el-form-item :label="item.title + '：'" style="width: 100%" v-bind="item.formItemAttrs" :prop="item.key">
             <Component
               :is="item.searchType"
               v-model="addFormData[item.key]"
               :placeholder="item.searchType && placeholderMapping[item.searchType]"
+              :options="item.options"
               style="width: 100%;"
               v-bind="item.attrs"
             >
@@ -45,7 +47,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ColumnProps, RequestUrl } from '@/components/ProTable/types'
+import { proTableProps } from '@/components/ProTable/types'
 import http from '@/service'
 import { projectConfig } from '@/service/api'
 import { ElMessage } from 'element-plus'
@@ -54,11 +56,6 @@ import { reactive, ref, computed } from 'vue'
 import { placeholderMapping } from '@/components/Fields/constants'
 import UseExpandField from '@/components/Fields/UseExpandField.vue'
 
-interface Props {
-  columns: ColumnProps[],
-  type: string,
-  requestUrl: RequestUrl
-}
 type ActionType = 'add' | 'edit' | ''
 
 type StringKey = Record<string, any>
@@ -67,7 +64,7 @@ type TitleMap = {
   [key in ActionType]: string
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps(proTableProps)
 
 const emit = defineEmits(['ok', 'editOk'])
 
